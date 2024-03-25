@@ -92,7 +92,7 @@ class ParameterItem:
         if self.widget == PARM_TYPE_CHOICE:
             if self.choices == _UNDEFINED_VALUE_:
                 raise ValueError(
-                    'Must list of choices: \'choices=["one", "two", ...]\''
+                    'Must be list of choices: \'choices=["one", "two", ...]\''
                 )
 
         elif self.widget == PARM_TYPE_INDEX:
@@ -105,16 +105,18 @@ class ParameterItem:
                 raise ValueError(
                     f"Received 'lo={self.lo}' which is greater than 'hi={self.hi}'."
                 )
+            # fmt: off
             if int(self.original_value) > self.hi:
                 raise ValueError(
                     f"Received 'original_value={self.original_value}."
-                    f"  Which is greater than: hi={self.hi}'."
+                    f"  Cannot be greater than: hi={self.hi}'."
                 )
             if int(self.original_value) < self.lo:
                 raise ValueError(
                     f"Received 'original_value={self.original_value}."
-                    f"  Which is less than: lo={self.lo}'."
+                    f"  Cannot be less than: lo={self.lo}'."
                 )
+            # fmt: on
 
         elif self.widget not in _PARM_WIDGET_KEYS:
             raise ValueError(

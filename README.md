@@ -1,7 +1,6 @@
 # pyQParamWidget: PyQt5 Parameter Editor Widgets
 
-
-A QWidget and QDialog to edit application parameters.
+A PyQt5 QWidget and QDialog to edit application parameters.
 
 ```py
 import pyqparamwidget as qpw
