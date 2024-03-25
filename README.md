@@ -1,8 +1,14 @@
-# parmed: PyQt5 Parameter Editor
+# PyQParamWidget: PyQt5 Parameter Editor Widgets
 
-A GUI to edit parameters in a PyQt5 application.
+TODO: rename throughout
 
-![example](./parmed.png)
+A QWidget and QDialog to edit application parameters.
+
+```py
+import pyqparamwidget as pqpw
+```
+
+![prototype GUI parts](./pyqparamwidget.png)
 
 ```
 # -----------------------------------------------------------------------------
