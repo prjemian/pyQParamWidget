@@ -1,14 +1,13 @@
-# PyQParamWidget: PyQt5 Parameter Editor Widgets
+# pyQParamWidget: PyQt5 Parameter Editor Widgets
 
-TODO: rename throughout
 
 A QWidget and QDialog to edit application parameters.
 
 ```py
-import pyqparamwidget as pqpw
+import pyqparamwidget as qpw
 ```
 
-![prototype GUI parts](./pyqparamwidget.png)
+![prototype GUI parts](./qpw.png)
 
 ```
 # -----------------------------------------------------------------------------
