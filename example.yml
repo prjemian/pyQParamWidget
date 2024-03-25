@@ -1,0 +1,25 @@
+# example parameters
+
+parameters:
+  settings_file:
+    label: settings file
+    default_value: "settings.ini"
+    tooltip: File path of the application settings.
+  catalog:
+    label: catalog
+    default_value: "bluesky_runs"
+    tooltip: Tiled catalog for bluesky data saved by databroker or tiled.
+  url:
+    label: tiled server URL
+    default_value: "http://localhost"
+    tooltip: URL for the tiled server.
+  autoconnect:
+    label: "Auto connect with tiled?"
+    default_value: true
+    widget: QPW_checkbox
+    tooltip: Connect with tiled server on startup?
+  autocatalog:
+    label: "Auto open catalog?"
+    default_value: true
+    widget: QPW_checkbox
+    tooltip: Open 'catalog' on startup?
