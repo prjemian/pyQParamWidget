@@ -14,6 +14,8 @@ Constants
 :see: https://www.pythonguis.com/tutorials/pyqt-dialogs/
 """
 
+from PyQt5 import QtWidgets
+
 PARM_TYPE_CHECKBOX = "QPW_checkbox"
 """
 Widget type for toggling a checkbox or boolean Parameter. (checked: True)
@@ -53,6 +55,15 @@ This will produce a QLineEdit widget in the editor.
 
 UNDEFINED_VALUE = object
 """Define as a symbol, avoids comparison with an explicit value."""
+
+
+_PARM_WIDGETS = {
+    PARM_TYPE_CHECKBOX: QtWidgets.QCheckBox,
+    PARM_TYPE_CHOICE: QtWidgets.QComboBox,
+    PARM_TYPE_DEFAULT: QtWidgets.QLineEdit,
+    PARM_TYPE_INDEX: QtWidgets.QSpinBox,
+}
+_PARM_WIDGET_KEYS = list(_PARM_WIDGETS.keys())
 
 
 # -----------------------------------------------------------------------------

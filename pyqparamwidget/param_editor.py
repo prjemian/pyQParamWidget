@@ -4,83 +4,15 @@ Parameter Editor: dialog for user-editable application parameters.
 .. autosummary::
 
    ~ParameterEditorWidget
-   ~ParameterItem
 """
-
-from dataclasses import KW_ONLY
-from dataclasses import dataclass
-from typing import List
 
 from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 
 from .constants import PARM_TYPE_CHECKBOX
 from .constants import PARM_TYPE_CHOICE
-from .constants import PARM_TYPE_DEFAULT
 from .constants import PARM_TYPE_INDEX
-from .constants import UNDEFINED_VALUE
-
-
-_PARM_WIDGETS = {
-    PARM_TYPE_CHECKBOX: QtWidgets.QCheckBox,
-    PARM_TYPE_CHOICE: QtWidgets.QComboBox,
-    PARM_TYPE_DEFAULT: QtWidgets.QLineEdit,
-    PARM_TYPE_INDEX: QtWidgets.QSpinBox,
-}
-_PARM_WIDGET_KEYS = list(_PARM_WIDGETS.keys())
-
-
-@dataclass()
-class ParameterItem:
-    """Each parameter to be edited has several pieces of information:"""
-
-    label: str
-    value: (int, str)
-    _: KW_ONLY  # all parameters below are specified by keyword
-    default_value: (int, str) = UNDEFINED_VALUE
-    widget: str = PARM_TYPE_DEFAULT
-    tooltip: str = ""
-    choices: List[str] = UNDEFINED_VALUE
-    hi: int = UNDEFINED_VALUE
-    lo: int = UNDEFINED_VALUE
-
-    def __post_init__(self):
-        """Validate the inputs."""
-        # print(f"{self.__class__.__name__}.{sys._getframe().f_code.co_name}()")
-
-        if self.widget == PARM_TYPE_CHOICE:
-            if self.choices == UNDEFINED_VALUE:
-                raise ValueError(
-                    'Must be list of choices: \'choices=["one", "two", ...]\''
-                )
-
-        elif self.widget == PARM_TYPE_INDEX:
-            # print(f"{self.choices=!r}")
-            if self.hi == UNDEFINED_VALUE:
-                raise ValueError("Must provide hi (maximum value), example: 'hi=9'")
-            if self.lo == UNDEFINED_VALUE:
-                raise ValueError("Must provide lo (minimum value), example: 'lo=0'")
-            if self.lo > self.hi:
-                raise ValueError(
-                    f"Received 'lo={self.lo}' which is greater than 'hi={self.hi}'."
-                )
-            # fmt: off
-            if int(self.value) > self.hi:
-                raise ValueError(
-                    f"Received 'value={self.value}."
-                    f"  Cannot be greater than: hi={self.hi}'."
-                )
-            if int(self.value) < self.lo:
-                raise ValueError(
-                    f"Received 'value={self.value}."
-                    f"  Cannot be less than: lo={self.lo}'."
-                )
-            # fmt: on
-
-        elif self.widget not in _PARM_WIDGET_KEYS:
-            raise ValueError(
-                f"Received 'widget={self.widget!r}.  Must be one of {_PARM_WIDGET_KEYS}."
-            )
+from .constants import _PARM_WIDGETS
 
 
 class ParameterEditorWidget(QtWidgets.QWidget):
@@ -152,12 +84,12 @@ class ParameterEditorWidget(QtWidgets.QWidget):
             self.editors[k] = editor
 
         self.do_cancel()  # sets editor widgets to supplied values
-        self.btn_cancel.clicked.connect(self.do_cancel)
-        self.btn_ok.clicked.connect(self.do_ok)
+        self.btn_reset.clicked.connect(self.do_cancel)
+        self.btn_accept.clicked.connect(self.do_ok)
 
     def changedValues(self):
         """Return dictionary with any changed values."""
-        results = {}
+        changes = {}
         for k, editor in self.editors.items():
             pitem = self.parameters[k]
             original_type = type(pitem.value)
@@ -172,8 +104,8 @@ class ParameterEditorWidget(QtWidgets.QWidget):
             # Report result using original data type.
             v = original_type(get_widget_value())
             if v != pitem.value:
-                results[k] = v
-        return results
+                changes[k] = v
+        return changes
 
     @QtCore.pyqtSlot()
     def do_cancel(self):
@@ -211,8 +143,8 @@ class ParameterEditorWidget(QtWidgets.QWidget):
         Set the dirty (values have changed) flag.  Make it visible.
         """
         self._dirty = dirty
-        self.btn_ok.setEnabled(dirty)
-        self.btn_cancel.setEnabled(dirty)
+        self.btn_accept.setEnabled(dirty)
+        self.btn_reset.setEnabled(dirty)
 
 
 # -----------------------------------------------------------------------------

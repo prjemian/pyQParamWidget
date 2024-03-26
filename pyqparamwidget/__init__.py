@@ -4,6 +4,7 @@ __package__ = "pyqparamwidget"
 
 from .constants import *  # noqa
 from .param_editor import *  # noqa
+from .param_item import *  # noqa
 
 try:
     from setuptools_scm import get_version
