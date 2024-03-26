@@ -19,21 +19,25 @@ class ParameterEditorWidget(QtWidgets.QWidget):
     """
     Edit parameters of one section.
 
-    Caller should not close this window if 'self.dirty()'
-    returns 'True'.
+    * Caller should not close this window if 'self.dirty()'
+      returns 'True'.
+
+    * Caller should call 'self.changedValues()' for a
+      dictionary of any changed values.  Dictionary keys
+      are as-supplied by user in 'parameters'.
 
     PARAMETERS
 
     - parent (object): QWidget parent
-    - parameters (dict): Dictionary of ParameterItem objects, keys are defined
-      by the caller.
+    - parameters (dict): Dictionary of ParameterItem objects,
+      keys are defined by the caller.
 
     ..  autosummary::
 
-        ~currentValues
-        ~do_cancel
-        ~do_ok
+        ~changedValues
         ~dirty
+        ~do_accept
+        ~do_reset
         ~setDirty
     """
 
@@ -83,12 +87,12 @@ class ParameterEditorWidget(QtWidgets.QWidget):
             self.form_layout.addRow(label, editor)
             self.editors[k] = editor
 
-        self.do_cancel()  # sets editor widgets to supplied values
-        self.btn_reset.clicked.connect(self.do_cancel)
-        self.btn_accept.clicked.connect(self.do_ok)
+        self.do_reset()  # sets editor widgets to supplied values
+        self.btn_reset.clicked.connect(self.do_reset)
+        self.btn_accept.clicked.connect(self.do_accept)
 
     def changedValues(self):
-        """Return dictionary with any changed values."""
+        """Return dictionary with only the changed values."""
         changes = {}
         for k, editor in self.editors.items():
             pitem = self.parameters[k]
@@ -108,8 +112,8 @@ class ParameterEditorWidget(QtWidgets.QWidget):
         return changes
 
     @QtCore.pyqtSlot()
-    def do_cancel(self):
-        """Set all widgets to original values. Set dirty flag to False."""
+    def do_reset(self):
+        """Update widget values from original values and clear dirty flag."""
         # print(f"{self.__class__.__name__}.{sys._getframe().f_code.co_name}()")
         for k, editor in self.editors.items():
             pitem = self.parameters[k]
@@ -124,9 +128,9 @@ class ParameterEditorWidget(QtWidgets.QWidget):
         self.setDirty(False)
 
     @QtCore.pyqtSlot()
-    def do_ok(self):
+    def do_accept(self):
         """
-        Return dict with current values of all widgets.
+        Update original values from widget values and clear dirty flag.
         """
         # print(f"{self.__class__.__name__}.{sys._getframe().f_code.co_name}()")
         for k, v in self.changedValues().items():
