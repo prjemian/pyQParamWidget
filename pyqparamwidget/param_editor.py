@@ -17,14 +17,15 @@ from .constants import _PARM_WIDGETS
 
 class ParameterEditorWidget(QtWidgets.QWidget):
     """
-    Edit parameters of one section.
+    Edit a set of parameters in a scrollable QWidget.
 
-    * Caller should not close this window if 'self.dirty()'
+    * Caller should not close this window if
+      ``ParameterEditorWidget.dirty()``
       returns 'True'.
 
-    * Caller should call 'self.changedValues()' for a
-      dictionary of any changed values.  Dictionary keys
-      are as-supplied by user in 'parameters'.
+    * Caller should call ``ParameterEditorWidget.changedValues()``
+      for a dictionary of any changed values.  Dictionary keys
+      are *as-supplied* by user in ``parameters``.
 
     PARAMETERS
 

@@ -3,23 +3,23 @@
 parameters:
   settings_file:
     label: settings file
-    default_value: "settings.ini"
+    value: "settings.ini"
     tooltip: File path of the application settings.
   url:
     label: server URL
-    default_value: "http://localhost"
+    value: "http://localhost"
     tooltip: URL for the server.
   autoconnect:
     label: "Auto connect with server?"
-    default_value: true
+    value: true
     widget: QPW_checkbox
     tooltip: Connect with server URL on startup?
   catalog:
     label: catalog
-    default_value: "my_catalog"
+    value: "my_catalog"
     tooltip: Catalog name provided by server.
   autocatalog:
     label: "Auto open catalog?"
-    default_value: true
+    value: true
     widget: QPW_checkbox
     tooltip: Open 'catalog' on startup?

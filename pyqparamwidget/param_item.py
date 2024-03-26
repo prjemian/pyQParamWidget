@@ -5,6 +5,8 @@ Parameter Item
    ~ParameterItem
 """
 
+# TODO: make a subclass for each type of widget
+
 __all__ = ["ParameterItem"]
 
 from dataclasses import KW_ONLY
@@ -20,17 +22,30 @@ from .constants import _PARM_WIDGET_KEYS
 
 @dataclass()
 class ParameterItem:
-    """Each parameter to be edited has several pieces of information:"""
+    """Each parameter to be edited has several pieces of information."""
 
     label: str
+    """Form text for this item."""
+
     value: (int, str)
+    """Supplied (or accepted) value."""
+
     _: KW_ONLY  # all parameters below are specified by keyword
-    default_value: (int, str) = UNDEFINED_VALUE
+
     widget: str = PARM_TYPE_DEFAULT
+    """Widget type for this item."""
+
     tooltip: str = ""
+    """Widget tooltip for this item."""
+
     choices: List[str] = UNDEFINED_VALUE
+    """List of choices if widget=PARM_TYPE_CHOICE."""
+
     hi: int = UNDEFINED_VALUE
+    """Maximum value for widget=PARM_TYPE_INDEX."""
+
     lo: int = UNDEFINED_VALUE
+    """Minimum value for widget=PARM_TYPE_INDEX."""
 
     def __post_init__(self):
         """Validate the inputs."""
@@ -69,7 +84,6 @@ class ParameterItem:
             raise ValueError(
                 f"Received 'widget={self.widget!r}.  Must be one of {_PARM_WIDGET_KEYS}."
             )
-
 
 # -----------------------------------------------------------------------------
 # :author:    Pete R. Jemian

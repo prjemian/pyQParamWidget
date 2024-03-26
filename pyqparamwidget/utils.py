@@ -13,7 +13,7 @@ ROOT_PATH = pathlib.Path(__file__).parent
 
 def myLoadUi(ui_file, baseinstance=None, **kw):
     """
-    Load a .ui file for use in building a GUI.
+    Load a ``.ui`` file for use in building a GUI.
     """
     from PyQt5 import uic
 

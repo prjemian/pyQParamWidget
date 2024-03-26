@@ -17,7 +17,7 @@ def read_parameter_specifications(parms_file):
         specs = yaml.load(f.read(), Loader=yaml.Loader)
     parms = {}
     for k, v in specs["parameters"].items():
-        args = [v["label"], v["default_value"]]
+        args = [v["label"], v["value"]]
         kwargs = {
             kw: v[kw]
             for kw in "widget choices hi lo tooltip".split()
