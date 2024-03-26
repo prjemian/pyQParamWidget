@@ -8,7 +8,7 @@ import pyqparamwidget as qpw
 
 ![prototype GUI parts](./qpw.png)
 
-```
+```text
 # -----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
 # :email:     prjemian@gmail.com

@@ -2,6 +2,7 @@
 
 __package__ = "pyqparamwidget"
 
+from .constants import *  # noqa
 from .param_editor import *  # noqa
 
 try:

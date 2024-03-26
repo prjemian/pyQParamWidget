@@ -11,29 +11,27 @@ sampler = {
     "tiled": {
         "server": {
             "settings_file": qpw.ParameterItem(
-                label="settings file", original_value="~/.config/settings.ini"
+                label="settings file", value="~/.config/settings.ini"
             ),
-            "catalog": qpw.ParameterItem(
-                label="catalog", original_value="bluesky_data"
-            ),
-            "url": qpw.ParameterItem(label="url", original_value="http://localhost"),
+            "catalog": qpw.ParameterItem(label="catalog", value="bluesky_data"),
+            "url": qpw.ParameterItem(label="url", value="http://localhost"),
         },
     },
     "UI": {
         "plotting": {
             "autoplot": qpw.ParameterItem(
                 label="autoplot",
-                original_value=True,
+                value=True,
                 widget=qpw.PARM_TYPE_CHECKBOX,
                 tooltip="Plot when the run is selected.",
             ),
             "autoselect": qpw.ParameterItem(
                 label="autoselect",
-                original_value=True,
+                value=True,
                 widget=qpw.PARM_TYPE_CHECKBOX,
                 tooltip="Automatically select the signals to plot.",
             ),
-            "colors": qpw.ParameterItem(label="colors", original_value="r b g k"),
+            "colors": qpw.ParameterItem(label="colors", value="r b g k"),
         },
     },
 }

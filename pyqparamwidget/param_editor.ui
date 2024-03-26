@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>458</width>
+    <width>340</width>
     <height>190</height>
    </rect>
   </property>
@@ -24,7 +24,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>438</width>
+        <width>320</width>
         <height>139</height>
        </rect>
       </property>
@@ -33,7 +33,7 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0,1,0,1,0,1">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0,1,0,1">
      <item>
       <spacer name="horizontalSpacer_3">
        <property name="orientation">
@@ -73,33 +73,10 @@
      <item>
       <widget class="QPushButton" name="btn_cancel">
        <property name="toolTip">
-        <string>Do not accept any changes.</string>
+        <string>Reset all changes.</string>
        </property>
        <property name="text">
         <string>Cancel</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_revert">
-       <property name="toolTip">
-        <string>Change each parameter back to original value.</string>
-       </property>
-       <property name="text">
-        <string>Revert</string>
        </property>
       </widget>
      </item>
