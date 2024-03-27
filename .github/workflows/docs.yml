@@ -42,9 +42,6 @@ jobs:
           echo $(pwd)
           ls -lAFgh
 
-      # - name: Build HTML
-      #   uses: ammaraskar/sphinx-action@master
-
       - name: update pip
         run: python3 -m pip install --upgrade pip
 
@@ -64,22 +61,18 @@ jobs:
       - name: Info
         run: |
           echo "#-----Info------------------------"
-          pip list
+          python3 -m pip list
+          # python -c "import pyqparamwidget; print(f'{pyqparamwidget.__version__=}')"
           echo "#---------------------------------"
 
-      # # - name: Diagnostics
-      # #   run: |
-      # #     python -m pip list
-      # #     python -c "import pyqparamwidget; print(f'{pyqparamwidget.__version__=}')"
+      - name: Sphinx
+        run: TZ=UTC make -C docs html
 
-      # - name: Sphinx
-      #   run: TZ=UTC make -C docs html
-
-      # - name: Deploy (to gh-pages branch) only on demand
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   if: ${{ github.event.inputs.deploy }}
-      #   with:
-      #     publish_branch: gh-pages
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: docs/build/html
-      #     force_orphan: true
+      - name: Deploy (to gh-pages branch) only on demand
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.event.inputs.deploy }}
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/build/html
+          force_orphan: true
