@@ -21,9 +21,6 @@ from dataclasses import KW_ONLY
 from dataclasses import dataclass
 from typing import List
 from typing import Type
-from typing import Union
-
-from PyQt5 import QtWidgets
 
 from .qpw_widgets import UNDEFINED_VALUE
 from .qpw_widgets import QPW_CheckBox
