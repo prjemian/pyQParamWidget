@@ -8,11 +8,15 @@ parameters:
   url:
     label: server URL
     value: "http://localhost"
+    choices: 
+      - "http://localhost"
+      - "http://127.0.0.1"
     tooltip: URL for the server.
+    widget: QPW_Choice
   autoconnect:
     label: "Auto connect with server?"
     value: true
-    widget: QPW_checkbox
+    widget: QPW_CheckBox
     tooltip: Connect with server URL on startup?
   catalog:
     label: catalog
@@ -21,5 +25,5 @@ parameters:
   autocatalog:
     label: "Auto open catalog?"
     value: true
-    widget: QPW_checkbox
+    widget: QPW_CheckBox
     tooltip: Open 'catalog' on startup?

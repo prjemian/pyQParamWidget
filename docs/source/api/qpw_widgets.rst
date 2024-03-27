@@ -1,5 +1,5 @@
 ===========
-qpw_widgets
+QPW Widgets
 ===========
 
 .. automodule:: pyqparamwidget.qpw_widgets

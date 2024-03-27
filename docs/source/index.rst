@@ -7,6 +7,12 @@
 pyQParamWidget
 ==========================================
 
+.. figure:: _static/qpw.png
+   :alt: fig.qpw
+   :width: 60%
+
+   Preliminary screen view of tree and editor panel widgets.
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

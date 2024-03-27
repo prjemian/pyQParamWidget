@@ -2,9 +2,9 @@
 
 __package__ = "pyqparamwidget"
 
-from .qpw_widgets import *  # noqa
 from .param_editor import *  # noqa
 from .param_item import *  # noqa
+from .qpw_widgets import *  # noqa
 
 try:
     from setuptools_scm import get_version

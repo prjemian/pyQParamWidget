@@ -16,26 +16,11 @@ Parameter Item
 ==========================
 
 A *parameter* has several pieces of information, as described in the source code
-documentation, see :class:`~pyqparamwidget.param_item.ParameterItemBase`. There are
-different types, depending on the type of parameter to be edited.
+documentation, see :class:`~pyqparamwidget.param_item.ParameterItemBase`. There
+are different types, depending on the type of parameter to be edited.  These are
+the types available:
 
-Parameter types
-----------------------
-
-TODO: too much jargon
-
-======================  ==================  =========
-Python symbol           Text name           Qt Widget
-======================  ==================  =========
-``PARM_TYPE_CHECKBOX``  ``"QPW_checkbox"``  QCheckBox
-``PARM_TYPE_CHOICE``    ``"QPW_choice"``    QComboBox
-``PARM_TYPE_INDEX``     ``"QPW_index"``     QSpinBox
-``PARM_TYPE_DEFAULT``   ``"QPW_default"``   QLineEdit
-======================  ==================  =========
-
-For each, show code and example image.
-
-``PARM_TYPE_CHECKBOX``
+``ParameterItemCheckbox``
 ------------------------------------
 
 .. code-block:: python
@@ -44,7 +29,7 @@ For each, show code and example image.
         "autoscale", True, tooltip="Otherwise, not autoscale."
         )
 
-``PARM_TYPE_CHOICE``
+``ParameterItemChoice``
 ------------------------------------
 
 .. code-block:: python
@@ -55,7 +40,7 @@ For each, show code and example image.
         tooltip="Pick a color.",
         )
 
-``PARM_TYPE_INDEX``
+``ParameterItemIndex``
 ------------------------------------
 
 .. code-block:: python
@@ -67,12 +52,12 @@ For each, show code and example image.
         tooltip="Choose a value from the range.",
         )
 
-``PARM_TYPE_DEFAULT``
+``ParameterItemText``
 ------------------------------------
 
 .. code-block:: python
 
-    ParameterItemText("title", "Suggested title")
+    ParameterItemText("title", "Suggested title", tooltip="Set the title. Be brief.")
 
 .. _guide.ParameterEditorWidget:
 
@@ -97,7 +82,11 @@ This example defines three objects:
     :linenos:
 
     parameters = {
-        "title": qpw.param_item.ParameterItemText("title", "Suggested title"),
+        "title": qpw.param_item.ParameterItemText(
+            "title",
+            "Suggested title",
+            tooltip="Set the title. Be brief."
+            ),
         "color": qpw.param_item.ParameterItemChoice(
             "color",
             "",

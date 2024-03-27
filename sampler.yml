@@ -4,12 +4,12 @@ parameters:
   check:
     label: check (or bool)
     value: false
-    widget: QPW_checkbox
+    widget: QPW_CheckBox
     tooltip: checkbox for selection or boolean
   choices:
     label: choices
     value: ""
-    widget: QPW_choice
+    widget: QPW_Choice
     tooltip: also use for radio button selection
     choices:
       - ""
@@ -20,7 +20,7 @@ parameters:
   scale:
     label: peak amplitude
     value: 100
-    widget: QPW_index
+    widget: QPW_Index
     tooltip: adjust a number
     hi: 10_000
     lo: 1
@@ -35,7 +35,7 @@ parameters:
   drummer:
     label: Beatle's drummer
     value: ""
-    widget: QPW_choice
+    widget: QPW_Choice
     tooltip: Who was the drummer of The Beatles?
     choices:
       - ""
@@ -46,7 +46,7 @@ parameters:
   color:
     label: choose 'green'
     value: ""
-    widget: QPW_choice
+    widget: QPW_Choice
     tooltip: Select the middle color.
     choices:
       - ""
@@ -60,7 +60,7 @@ parameters:
   zero:
     label: find zero
     value: 5
-    widget: QPW_index
+    widget: QPW_Index
     tooltip: adjust to get the number '0'
     hi: 10
     lo: -10

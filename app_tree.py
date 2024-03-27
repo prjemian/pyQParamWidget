@@ -5,33 +5,30 @@ https://pythonspot.com/pyqt5-treeview/
 import sys
 
 from PyQt5 import QtWidgets
+
 import pyqparamwidget as qpw
 
 sampler = {
     "tiled": {
         "server": {
-            "settings_file": qpw.ParameterItemBase(
-                label="settings file", value="~/.config/settings.ini"
-            ),
-            "catalog": qpw.ParameterItemBase(label="catalog", value="bluesky_data"),
-            "url": qpw.ParameterItemBase(label="url", value="http://localhost"),
+            "settings_file": qpw.ParameterItemText(label="settings file", value="~/.config/settings.ini"),
+            "catalog": qpw.ParameterItemText(label="catalog", value="bluesky_data"),
+            "url": qpw.ParameterItemText(label="url", value="http://localhost"),
         },
     },
     "UI": {
         "plotting": {
-            "autoplot": qpw.ParameterItemBase(
+            "autoplot": qpw.ParameterItemCheckbox(
                 label="autoplot",
                 value=True,
-                widget=qpw.PARM_TYPE_CHECKBOX,
                 tooltip="Plot when the run is selected.",
             ),
-            "autoselect": qpw.ParameterItemBase(
+            "autoselect": qpw.ParameterItemCheckbox(
                 label="autoselect",
                 value=True,
-                widget=qpw.PARM_TYPE_CHECKBOX,
                 tooltip="Automatically select the signals to plot.",
             ),
-            "colors": qpw.ParameterItemBase(label="colors", value="r b g k"),
+            "colors": qpw.ParameterItemChoice(label="colors", value="", choices=["", "r", "b", "g", "k"]),
         },
     },
 }
