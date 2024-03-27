@@ -10,28 +10,28 @@ import pyqparamwidget as qpw
 sampler = {
     "tiled": {
         "server": {
-            "settings_file": qpw.ParameterItem(
+            "settings_file": qpw.ParameterItemBase(
                 label="settings file", value="~/.config/settings.ini"
             ),
-            "catalog": qpw.ParameterItem(label="catalog", value="bluesky_data"),
-            "url": qpw.ParameterItem(label="url", value="http://localhost"),
+            "catalog": qpw.ParameterItemBase(label="catalog", value="bluesky_data"),
+            "url": qpw.ParameterItemBase(label="url", value="http://localhost"),
         },
     },
     "UI": {
         "plotting": {
-            "autoplot": qpw.ParameterItem(
+            "autoplot": qpw.ParameterItemBase(
                 label="autoplot",
                 value=True,
                 widget=qpw.PARM_TYPE_CHECKBOX,
                 tooltip="Plot when the run is selected.",
             ),
-            "autoselect": qpw.ParameterItem(
+            "autoselect": qpw.ParameterItemBase(
                 label="autoselect",
                 value=True,
                 widget=qpw.PARM_TYPE_CHECKBOX,
                 tooltip="Automatically select the signals to plot.",
             ),
-            "colors": qpw.ParameterItem(label="colors", value="r b g k"),
+            "colors": qpw.ParameterItemBase(label="colors", value="r b g k"),
         },
     },
 }
@@ -54,7 +54,7 @@ class DemoTreeWidget(QtWidgets.QTreeWidget):
         def isParmsDict(obj):
             if isinstance(obj, dict):
                 for v in obj.values():
-                    if not isinstance(v, qpw.ParameterItem):
+                    if not isinstance(v, qpw.ParameterItemBase):
                         return False
                 return True
             return False

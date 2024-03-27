@@ -1,7 +1,7 @@
 ===========
-Constants
+qpw_widgets
 ===========
 
-.. automodule:: pyqparamwidget.constants
+.. automodule:: pyqparamwidget.qpw_widgets
     :members:
     :private-members:

@@ -6,13 +6,15 @@ Parameter Editor: dialog for user-editable application parameters.
    ~ParameterEditorWidget
 """
 
+# TODO: refactor with custom subclasses
+
 from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 
-from .constants import PARM_TYPE_CHECKBOX
-from .constants import PARM_TYPE_CHOICE
-from .constants import PARM_TYPE_INDEX
-from .constants import _PARM_WIDGETS
+from .qpw_widgets import PARM_TYPE_CHECKBOX
+from .qpw_widgets import PARM_TYPE_CHOICE
+from .qpw_widgets import PARM_TYPE_INDEX
+from .qpw_widgets import _PARM_WIDGETS
 
 
 class ParameterEditorWidget(QtWidgets.QWidget):
@@ -30,7 +32,7 @@ class ParameterEditorWidget(QtWidgets.QWidget):
     PARAMETERS
 
     - parent (object): QWidget parent
-    - parameters (dict): Dictionary of ParameterItem objects,
+    - parameters (dict): Dictionary of ParameterItemBase objects,
       keys are defined by the caller.
 
     ..  autosummary::

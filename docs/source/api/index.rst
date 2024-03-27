@@ -7,7 +7,7 @@ Source Code documentation
    :caption: Contents:
    :glob:
 
-   constants
+   qpw_widgets
    param_editor
    param_item
    utils

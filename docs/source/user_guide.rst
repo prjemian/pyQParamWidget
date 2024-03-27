@@ -12,15 +12,17 @@ dialog for editing a hierarchical structure with various sets of parameters.
 
 .. _guide.ParameterItem:
 
-``ParameterItem``
+Parameter Item
 ==========================
 
 A *parameter* has several pieces of information, as described in the source code
-documentation, see :class:`~pyqparamwidget.param_item.ParameterItem`. There are
-different widget types, depending on the type of parameter to be edited.
+documentation, see :class:`~pyqparamwidget.param_item.ParameterItemBase`. There are
+different types, depending on the type of parameter to be edited.
 
 Parameter types
 ----------------------
+
+TODO: too much jargon
 
 ======================  ==================  =========
 Python symbol           Text name           Qt Widget
@@ -38,10 +40,8 @@ For each, show code and example image.
 
 .. code-block:: python
 
-    ParameterItem(
-        "autoscale", True,
-        tooltip="Otherwise, not autoscale.",
-        widget="QPW_checkbox",
+    ParameterItemCheckbox(
+        "autoscale", True, tooltip="Otherwise, not autoscale."
         )
 
 ``PARM_TYPE_CHOICE``
@@ -49,11 +49,10 @@ For each, show code and example image.
 
 .. code-block:: python
 
-    ParameterItem(
+    ParameterItemChoice(
         "color", "",
         choices=["", "red", "green", "blue"],
         tooltip="Pick a color.",
-        widget="QPW_choice",
         )
 
 ``PARM_TYPE_INDEX``
@@ -61,12 +60,11 @@ For each, show code and example image.
 
 .. code-block:: python
 
-    ParameterItem(
+    ParameterItemIndex(
         "x", 50,
         hi=100,
         lo=0,
         tooltip="Choose a value from the range.",
-        widget="QPW_index",
         )
 
 ``PARM_TYPE_DEFAULT``
@@ -74,7 +72,7 @@ For each, show code and example image.
 
 .. code-block:: python
 
-    ParameterItem("title", "Suggested title")
+    ParameterItemText("title", "Suggested title")
 
 .. _guide.ParameterEditorWidget:
 
@@ -93,25 +91,24 @@ any other structure allowed by Python as dictionary keys.  The
 keys, themselves, are not used by ``ParameterEditorWidget``.  They
 are only used to identify each of the ``ParameterItem`` objects.
 
-This example defines three ``ParameterItem`` objects:
+This example defines three objects:
 
 .. code-block:: python
     :linenos:
 
     parameters = {
-        "title": ParameterItem("title", "Suggested title"),
-        "color": ParameterItem(
-                "color", "",
-                choices=["", "red", "green", "blue"],
-                tooltip="Pick a color.",
-                widget="QPW_choice",
-                ),
-        "autoscale": ParameterItem(
-                "autoscale", True,
-                tooltip="Otherwise, not autoscale.",
-                widget="QPW_checkbox",
-                ),
-
+        "title": qpw.param_item.ParameterItemText("title", "Suggested title"),
+        "color": qpw.param_item.ParameterItemChoice(
+            "color",
+            "",
+            choices=["", "red", "green", "blue"],
+            tooltip="Pick a color.",
+        ),
+        "autoscale": qpw.param_item.ParameterItemCheckbox(
+            "autoscale",
+            True,
+            tooltip="Otherwise, not autoscale.",
+        ),
     }
 
 Next, create the ``ParameterEditorWidget`` object, passing in the ``parent``
