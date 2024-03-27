@@ -1,5 +1,5 @@
 """
-https://pythonspot.com/pyqt5-treeview/
+Demonstrate the ParameterTree widget.
 """
 
 import sys
@@ -9,11 +9,18 @@ from PyQt5 import QtWidgets
 import pyqparamwidget as qpw
 
 sampler = {
-    "tiled": {
-        "server": {
-            "settings_file": qpw.ParameterItemText(label="settings file", value="~/.config/settings.ini"),
-            "catalog": qpw.ParameterItemText(label="catalog", value="bluesky_data"),
-            "url": qpw.ParameterItemText(label="url", value="http://localhost"),
+    "applications": {
+        "tiled": {
+            "server": {
+                "settings_file": qpw.ParameterItemText(
+                    label="settings file", value="~/.config/settings.ini"
+                ),
+                "catalog": qpw.ParameterItemText(label="catalog", value="bluesky_data"),
+                "url": qpw.ParameterItemText(label="url", value="http://localhost"),
+            },
+        },
+        "other": {
+            "demo": qpw.ParameterItemCheckbox("demo mode?", True),
         },
     },
     "UI": {
@@ -28,51 +35,32 @@ sampler = {
                 value=True,
                 tooltip="Automatically select the signals to plot.",
             ),
-            "colors": qpw.ParameterItemChoice(label="colors", value="", choices=["", "r", "b", "g", "k"]),
+            "colors": qpw.ParameterItemChoice(
+                label="colors", value="", choices=["", "r", "b", "g", "k"]
+            ),
         },
     },
 }
-# print(sampler)
 
 
-class DemoTreeWidget(QtWidgets.QTreeWidget):
-    """
-    Demo
-    """
-
-    def __init__(self, *args, parms={}, headings=["heading"], **kwargs):
-        from PyQt5.QtWidgets import QTreeWidgetItem
-
+class MainWindow(QtWidgets.QMainWindow):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.setColumnCount(len(headings))
-        self.setHeaderLabels(headings)
-        self.setSortingEnabled(True)
 
-        def isParmsDict(obj):
-            if isinstance(obj, dict):
-                for v in obj.values():
-                    if not isinstance(v, qpw.ParameterItemBase):
-                        return False
-                return True
-            return False
-
-        def build_subtree(parent, subparms):
-            if not isParmsDict(subparms):
-                for k, v in subparms.items():
-                    item = QTreeWidgetItem(None, [k])
-                    parent.addChild(item)
-                    build_subtree(item, v)
-
-        for k, v in parms.items():
-            item = QTreeWidgetItem(None, [k])
-            self.addTopLevelItems([item])
-            build_subtree(item, v)
+        print("before")
+        dialog = qpw.ParameterTree(None, parameters=sampler)
+        # dialog.show()  # modeless: does not block
+        dialog.exec()  # modal: blocks
+        # Show the final values of the parameters.
+        print("after")
+        print(f"{dialog.values()=}")
 
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    window = DemoTreeWidget(None, parms=sampler)
+    window = MainWindow()
     window.show()
+
     sys.exit(app.exec())
 
 

@@ -32,31 +32,17 @@ def read_parameter_specifications(parms_file):
         kwargs = {kw: v[kw] for kw in "widget choices hi lo tooltip".split() if v.get(kw) is not None}
         parms[k] = widget(*args, **kwargs)
 
-    # parms = {
-    #     "title": qpw.param_item.ParameterItemText("title", "Suggested title"),
-    #     "color": qpw.param_item.ParameterItemChoice(
-    #         "color",
-    #         "",
-    #         choices=["", "red", "green", "blue"],
-    #         tooltip="Pick a color.",
-    #     ),
-    #     "autoscale": qpw.param_item.ParameterItemCheckbox(
-    #         "autoscale",
-    #         True,
-    #         tooltip="Otherwise, not autoscale.",
-    #     ),
-    # }
-
     return parms
 
 
 def main():
-    from pyqparamwidget import ParameterEditorWidget
+    from pyqparamwidget import ParameterEditor
 
     parms = read_parameter_specifications(PARMS_FILE)
     app = QtWidgets.QApplication(sys.argv)
-    window = ParameterEditorWidget(None, parms)
+    window = ParameterEditor(None, parms)
     window.show()
+    print(f"{window.widgetValues()=}")
     sys.exit(app.exec())
 
 

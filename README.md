@@ -6,7 +6,7 @@ A PyQt5 QWidget and QDialog to edit application parameters.
 import pyqparamwidget as qpw
 ```
 
-![prototype GUI parts](./qpw.png)
+![View of example tree and editor](./qpw.png)
 
 ```text
 # -----------------------------------------------------------------------------

@@ -11,7 +11,7 @@ pyQParamWidget
    :alt: fig.qpw
    :width: 60%
 
-   Preliminary screen view of tree and editor panel widgets.
+   View of example tree and editor panel widgets.
 
 .. toctree::
    :maxdepth: 2

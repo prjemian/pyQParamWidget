@@ -3,7 +3,7 @@ Parameter Editor: dialog for user-editable application parameters.
 
 .. autosummary::
 
-   ~ParameterEditorWidget
+   ~ParameterEditor
 """
 
 from PyQt5 import QtCore
@@ -13,21 +13,22 @@ from .qpw_widgets import QPW_CheckBox
 from .qpw_widgets import QPW_Choice
 from .qpw_widgets import QPW_Index
 from .qpw_widgets import QPW_Text
+from .utils import unsaved_changes_alert_dialog
 
 
-class ParameterEditorWidget(QtWidgets.QWidget):
+class ParameterEditor(QtWidgets.QWidget):
     """
     Edit a set of parameters in a scrollable QWidget.
 
     * Caller should not close this window if
-      ``ParameterEditorWidget.dirty()``
+      ``ParameterEditor.dirty()``
       returns 'True'.
 
     * Before closing this window:
 
       * User must ``Accept`` or ``Reset`` any changes (which sets ``dirty=False``).
-      * Verify: ``ParameterEditorWidget.dirty() == True``
-      * Get values: ``results = ParameterEditorWidget.widgetValues()``
+      * Verify: ``ParameterEditor.dirty() == True``
+      * Get values: ``results = ParameterEditor.widgetValues()``
 
     PARAMETERS
 
@@ -87,7 +88,9 @@ class ParameterEditorWidget(QtWidgets.QWidget):
                 editor.setText(str(pitem.value))
                 editor.textChanged.connect(checkIfDirty)
             else:
-                raise TypeError(f"Unexpected editor widget: {editor.__class__.__name__}")
+                raise TypeError(
+                    f"Unexpected editor widget: {editor.__class__.__name__}"
+                )
 
             label = QtWidgets.QLabel(self, text=pitem.label)
             self.form_layout.addRow(label, editor)
@@ -102,9 +105,21 @@ class ParameterEditorWidget(QtWidgets.QWidget):
         Return dictionary with only the changed values.
 
         .. note:: Result is always empty dictionary when
-           ``dirty==True``.  Use :meth:`~pyqparamwidget.param_editor.ParameterEditorWidget.widgetValues()` to get the final values.
+           ``dirty==True``.  Use :meth:`~pyqparamwidget.param_editor.ParameterEditor.widgetValues()` to get the final values.
         """
-        return {k: editor.qpw_get() for k, editor in self.editors.items() if editor.qpw_isChanged()}
+        return {
+            k: editor.qpw_get()
+            for k, editor in self.editors.items()
+            if editor.qpw_isChanged()
+        }
+
+    def closeEvent(self, event):
+        """Do not allow editor to be closed if there are unresolved changes."""
+        if self.dirty():
+            unsaved_changes_alert_dialog(self)
+            event.ignore()
+        else:
+            event.accept()
 
     @QtCore.pyqtSlot()
     def do_reset(self):

@@ -82,7 +82,9 @@ class ParameterItemChoice(ParameterItemBase):
     """Choose a parameter value from a list."""
 
     def __init__(self, label, value, choices=[], tooltip=""):
-        super().__init__(label, value, tooltip=tooltip, choices=choices, widget_class=QPW_Choice)
+        super().__init__(
+            label, value, tooltip=tooltip, choices=choices, widget_class=QPW_Choice
+        )
 
     def validate(self):
         """Must provide a list of choices."""
@@ -102,7 +104,9 @@ class ParameterItemIndex(ParameterItemBase):
         tooltip: str = "",
         widget_class=QPW_Index,
     ):
-        super().__init__(label, value, tooltip=tooltip, hi=hi, lo=lo, widget_class=widget_class)
+        super().__init__(
+            label, value, tooltip=tooltip, hi=hi, lo=lo, widget_class=widget_class
+        )
 
     def validate(self):
         """Must provide lo <= value <= hi."""
@@ -111,7 +115,9 @@ class ParameterItemIndex(ParameterItemBase):
         if self.lo == UNDEFINED_VALUE:
             raise ValueError("Must provide lo (minimum value), example: 'lo=0'")
         if self.lo > self.hi:
-            raise ValueError(f"Received 'lo={self.lo}' which is greater than 'hi={self.hi}'.")
+            raise ValueError(
+                f"Received 'lo={self.lo}' which is greater than 'hi={self.hi}'."
+            )
         # fmt: off
         if int(self.value) > self.hi:
             raise ValueError(
