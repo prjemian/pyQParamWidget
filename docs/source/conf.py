@@ -6,12 +6,8 @@
 # -- Path setup --------------------------------------------------------------
 
 import pathlib
-import sys
 import tomllib
 from importlib.metadata import version
-
-sys.path.insert(0, str(pathlib.Path().absolute().parent.parent))
-import pyqparamwidget  # noqa
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -68,8 +64,7 @@ html_theme = "pydata_sphinx_theme"
 
 # -- Fake stubs for external packages -------------------------------------------------
 
-# https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#confval-autodoc_mock_imports
+# # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#confval-autodoc_mock_imports
 autodoc_mock_imports = """
-    numpy
     PyQt5
 """.split()

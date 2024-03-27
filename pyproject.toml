@@ -37,7 +37,7 @@ classifiers = [
   "Topic :: Software Development",
 ]
 dependencies = [
-  "pyqt5",
+  "PyQt5",
 ]
 
 [project.urls]
