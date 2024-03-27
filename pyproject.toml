@@ -19,7 +19,7 @@ maintainers = [
   { name="Pete Jemian", email="prjemian+pyQParamWidget@gmail.com" },
 ]
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 keywords = ['PyQt', 'editor']
 license = {file = "pyqparamwidget/LICENSE.txt"}
 classifiers = [
