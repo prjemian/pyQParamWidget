@@ -65,3 +65,11 @@ autoclass_content = "both"
 
 html_static_path = ["_static"]
 html_theme = "pydata_sphinx_theme"
+
+# -- Fake stubs for external packages -------------------------------------------------
+
+# https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#confval-autodoc_mock_imports
+autodoc_mock_imports = """
+    numpy
+    PyQt5
+""".split()
