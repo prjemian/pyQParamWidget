@@ -4,6 +4,7 @@ __package__ = "pyqparamwidget"
 
 from .param_editor import *  # noqa
 from .param_item import *  # noqa
+from .param_tree import *  # noqa
 from .qpw_widgets import *  # noqa
 
 try:

@@ -102,9 +102,7 @@ class ParameterItemIndex(ParameterItemBase):
         tooltip: str = "",
         widget_class=QPW_Index,
     ):
-        super().__init__(
-            label, value, tooltip=tooltip, hi=hi, lo=lo, widget_class=widget_class
-        )
+        super().__init__(label, value, tooltip=tooltip, hi=hi, lo=lo, widget_class=widget_class)
 
     def validate(self):
         """Must provide lo <= value <= hi."""

@@ -10,4 +10,5 @@ Source Code documentation
    qpw_widgets
    param_editor
    param_item
+   param_tree
    utils
