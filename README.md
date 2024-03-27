@@ -6,7 +6,7 @@ GH tag | GH release | PyPI | conda-forge
 
 Python version(s) | Unit Tests | Code Coverage | License
 --- | --- | --- | ---
-[![Python version](https://img.shields.io/pypi/pyversions/pyqparamwidget.svg)](https://pypi.python.org/pypi/pyqparamwidget) | [![Unit Tests](https://github.com/prjemian/pyqparamwidget/workflows/Unit%20Tests/badge.svg)](https://github.com/prjemian/pyqparamwidget/actions/workflows/unit_tests.yml) | [![Coverage Status](https://coveralls.io/repos/github/prjemian/pyqparamwidget/badge.svg?branch=main)](https://coveralls.io/github/prjemian/pyqparamwidget?branch=main) | [![license: ANL](https://img.shields.io/badge/license-ANL-brightgreen)](/LICENSE.txt)
+[![Python version](https://img.shields.io/pypi/pyversions/pyqparamwidget.svg)](https://pypi.python.org/pypi/pyqparamwidget) | [![Unit Tests & Code Coverage](https://github.com/prjemian/pyqparamwidget/actions/workflows/code.yml/badge.svg)](https://github.com/prjemian/pyqparamwidget/actions/workflows/code.yml) | [![Coverage Status](https://coveralls.io/repos/github/prjemian/pyqparamwidget/badge.svg?branch=main)](https://coveralls.io/github/prjemian/pyqparamwidget?branch=main) | [![license: ANL](https://img.shields.io/badge/license-ANL-brightgreen)](/LICENSE.txt)
 
 A PyQt5 QWidget and QDialog to edit application parameters.
 
