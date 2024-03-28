@@ -4,7 +4,7 @@ Parameter Tree
 ==================================
 
 A *hierarchy* of parameters can be edited using the
-:class:`~pyQParamWidget.param_tree.ParameterTree()` dialog. 
+:class:`~pyQParamWidget.param_tree.ParameterTree()` dialog.
 
 .. seealso:: :ref:`guide.ParameterEditor`
 
@@ -81,7 +81,7 @@ Get the values from the tree dialog
 -----------------------------------
 
 The widget's :meth:`~pyQParamWidget.param_tree.ParameterTree.values`
-method returns a hierarchical dictionary with the accepted parameter values.  The dictionary 
+method returns a hierarchical dictionary with the accepted parameter values.  The dictionary
 keys are the same as the parameter dictionary (``hierarchy``) supplied.
 
 .. code-block:: python
@@ -99,24 +99,24 @@ Using the ``hierarchy`` dictionary above, and making no changes in the tree dial
 .. code-block:: python
 
     {
-    "applications": {
-        "tiled": {
-            "server": {
-                "settings_file": "~/.config/settings.ini",
-                "catalog": "bluesky_data",
-                "url": "http://localhost",
+        "applications": {
+            "tiled": {
+                "server": {
+                    "settings_file": "~/.config/settings.ini",
+                    "catalog": "bluesky_data",
+                    "url": "http://localhost",
+                },
+            },
+            "other": {
+                "demo": True,
             },
         },
-        "other": {
-            "demo": True,
-        },
-    },
-    "UI": {
-        "plotting": {
-            "autoplot": True,
-            "autoselect": True,
-            "colors": "",
-        },
+        "UI": {
+            "plotting": {
+                "autoplot": True,
+                "autoselect": True,
+                "colors": "",
+            },
     }
 
 Accept and Reset buttons
@@ -131,7 +131,8 @@ resolved.
 .. figure:: ../_static/tree-with-changes.png
    :width: 60%
 
-   Editor shown for ``other`` parameters. After the checkbox was changed, the
-   ``server`` was selected.  This brings up the *Alert* message, stating that
-   changes must first be resolved.  Once the dialog is closed, the selected item
-   will be changed back to ``other``.
+   Editor shown for ``other`` parameters.
+
+After the checkbox was changed, the ``server`` was selected.  This brings up the
+*Alert* message, stating that changes must first be resolved.  Once the dialog
+is closed, the selected item will be changed back to ``other``.

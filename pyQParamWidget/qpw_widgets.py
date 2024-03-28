@@ -6,7 +6,7 @@ Constants
    ~UNDEFINED_VALUE
    ~QPW_CheckBox
    ~QPW_Choice
-   ~QPW_Index
+   ~QPW_SpinBox
    ~QPW_Mixin
    ~QPW_Text
 
@@ -124,7 +124,7 @@ class QPW_Choice(QPW_Mixin, QtWidgets.QComboBox):
         super().qpw_setup(pitem, slot)
 
 
-class QPW_Index(QPW_Mixin, QtWidgets.QSpinBox):
+class QPW_SpinBox(QPW_Mixin, QtWidgets.QSpinBox):
     """
     Widget type for adjusting a number between limits.
 

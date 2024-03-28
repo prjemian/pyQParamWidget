@@ -71,26 +71,26 @@ ParameterItemChoice
    Example widget to edit a ``ParameterItemChoice``.  Drop-down
    menu is selected to show the list of choices.
 
-ParameterItemIndex
+ParameterItemSpinBox
 ------------------------------------
 
-``ParameterItemIndex`` uses a ``QSpinBox`` widget to select a value within limits of ``lo`` and ``hi``.
+``ParameterItemSpinBox`` uses a ``QSpinBox`` widget to select a value within limits of ``lo`` and ``hi``.
 
 .. code-block:: python
 
-    ParameterItemIndex(
+    ParameterItemSpinBox(
         "x", 50,
         hi=100,
         lo=0,
         tooltip="Choose a value from the range.",
         )
 
-.. rubric:: Example widget to edit a ParameterItemIndex.
+.. rubric:: Example widget to edit a ParameterItemSpinBox.
 
-.. figure:: ../_static/ParameterItemIndex.png
+.. figure:: ../_static/ParameterItemSpinBox.png
    :width: 40%
 
-   Example widget to edit a ``ParameterItemIndex``.
+   Example widget to edit a ``ParameterItemSpinBox``.
 
 ParameterItemText
 ------------------------------------

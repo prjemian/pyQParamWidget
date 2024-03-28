@@ -4,7 +4,7 @@ Parameter Editor
 ==================================
 
 A parameter dictionary can be edited with a
-:class:`~pyQParamWidget.param_editor.ParameterEditor()` widget. 
+:class:`~pyQParamWidget.param_editor.ParameterEditor()` widget.
 
 .. seealso:: :ref:`guide.ParameterTree`
 
@@ -91,7 +91,7 @@ This example defines four objects:
             True,
             tooltip="Should wait at each point?",
         ),
-        "item4": qpw.param_item.ParameterItemIndex(
+        "item4": qpw.param_item.ParameterItemSpinBox(
             "# of points",
             21,
             lo=2, hi=10_000,
@@ -115,7 +115,7 @@ Get the values from the editor widget
 -------------------------------------
 
 The widget's :meth:`~pyQParamWidget.param_editor.ParameterEditor.widgetValues`
-method returns a dictionary with the accepted parameter values.  The dictionary 
+method returns a dictionary with the accepted parameter values.  The dictionary
 keys are the same as the parameter dictionary supplied.
 
 .. code-block:: python
@@ -131,7 +131,18 @@ Using the ``parameters`` dictionary above, and making no changes in the editor w
 
 .. code-block:: python
 
-    {"item1": "Suggested title", "item2": "10 uA/V", "item3": True, "item4": 21}
+    {
+        "item1": "Suggested title",
+        "item2": "10 uA/V",
+        "item3": True,
+        "item4": 21
+    }
+
+Data types
+----------
+
+The editor attempts to report the values in the original data type as given in
+the dictionary of parameters.
 
 .. _guide:alert:
 

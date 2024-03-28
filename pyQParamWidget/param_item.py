@@ -5,7 +5,7 @@ Parameter Item
    ~ParameterItemBase
    ~ParameterItemCheckbox
    ~ParameterItemChoice
-   ~ParameterItemIndex
+   ~ParameterItemSpinBox
    ~ParameterItemText
 """
 
@@ -13,7 +13,7 @@ __all__ = """
    ParameterItemBase
    ParameterItemCheckbox
    ParameterItemChoice
-   ParameterItemIndex
+   ParameterItemSpinBox
    ParameterItemText
 """.split()
 
@@ -24,7 +24,7 @@ from typing import List
 from .qpw_widgets import UNDEFINED_VALUE
 from .qpw_widgets import QPW_CheckBox
 from .qpw_widgets import QPW_Choice
-from .qpw_widgets import QPW_Index
+from .qpw_widgets import QPW_SpinBox
 from .qpw_widgets import QPW_Text
 
 
@@ -47,10 +47,10 @@ class ParameterItemBase:
     """List of choices for QPW_Choice widget."""
 
     hi: int = UNDEFINED_VALUE
-    """Maximum value for QPW_Index widget."""
+    """Maximum value for QPW_SpinBox widget."""
 
     lo: int = UNDEFINED_VALUE
-    """Minimum value for QPW_Index widget."""
+    """Minimum value for QPW_SpinBox widget."""
 
     def validate(self):
         raise NotImplementedError("Implement in the subclass.")
@@ -89,10 +89,10 @@ class ParameterItemChoice(ParameterItemBase):
             raise ValueError('Must be list of choices: \'choices=["one", "two", ...]\'')
 
 
-class ParameterItemIndex(ParameterItemBase):
+class ParameterItemSpinBox(ParameterItemBase):
     """Set a numerical parameter between lo & hi."""
 
-    widget_class = QPW_Index
+    widget_class = QPW_SpinBox
 
     def __init__(
         self,

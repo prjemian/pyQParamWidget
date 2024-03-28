@@ -20,7 +20,7 @@ parameters:
   scale:
     label: peak amplitude
     value: 100
-    widget: QPW_Index
+    widget: QPW_SpinBox
     tooltip: adjust a number
     hi: 10_000
     lo: 1
@@ -60,7 +60,7 @@ parameters:
   zero:
     label: find zero
     value: 5
-    widget: QPW_Index
+    widget: QPW_SpinBox
     tooltip: adjust to get the number '0'
     hi: 10
     lo: -10
