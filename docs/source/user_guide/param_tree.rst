@@ -122,9 +122,15 @@ Using the ``hierarchy`` dictionary above, and making no changes in the tree dial
 Accept and Reset buttons
 ------------------------
 
-An alert will be shown (see :ref:`guide:alert`) if the editor has changes. It will
-not be possible to select another item from the tree until the changes are
-resolved.
+The **Accept** and **Reset** buttons are enabled when the editor has changes.
+The **Accept** button will update the parameter values from the widgets. The
+**Reset** button will update the widgets from the parameters. The user must
+resolve any changes (by pressing the corresponding button) before another item
+in the tree can be selected or the dialog can be dismissed.
+
+If the user tries to close the dialog or select a new tree item while changes
+are unresolved, an alert will be shown (see :ref:`guide:alert`). It will not be
+possible to select another item from the tree until the changes are resolved.
 
 .. rubric:: Alert message when selecting another tree item while editor has changes.
 
@@ -133,6 +139,7 @@ resolved.
 
    Editor shown for ``other`` parameters.
 
-After the checkbox was changed, the ``server`` was selected.  This brings up the
-*Alert* message, stating that changes must first be resolved.  Once the dialog
-is closed, the selected item will be changed back to ``other``.
+After the checkbox was changed (in this example), the ``server`` item was
+selected in the tree. The *Alert* message box appeared, stating that changes
+must first be resolved. Once the *Alert* message box was closed, the selected
+item changed back to ``other``.
