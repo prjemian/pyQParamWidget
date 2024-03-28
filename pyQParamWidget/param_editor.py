@@ -74,18 +74,18 @@ class ParameterEditor(QtWidgets.QWidget):
 
             if isinstance(editor, QPW_CheckBox):
                 editor.setTristate(on=False)
-                editor.setCheckState(2 if pitem.value else 0)
+                editor.qpw_set(pitem.value)
                 editor.stateChanged.connect(checkIfDirty)
             elif isinstance(editor, QPW_Choice):
                 editor.addItems(pitem.choices)
-                editor.setCurrentText(str(pitem.value))
+                editor.qpw_set(pitem.value)
                 editor.currentTextChanged.connect(checkIfDirty)
             elif isinstance(editor, QPW_Index):
                 editor.setRange(pitem.lo, pitem.hi)
-                editor.setValue(pitem.value)
+                editor.qpw_set(pitem.value)
                 editor.valueChanged.connect(checkIfDirty)
             elif isinstance(editor, QPW_Text):
-                editor.setText(str(pitem.value))
+                editor.qpw_set(pitem.value)
                 editor.textChanged.connect(checkIfDirty)
             else:
                 raise TypeError(
