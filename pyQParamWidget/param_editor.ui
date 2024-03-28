@@ -50,7 +50,7 @@
      <item>
       <widget class="QPushButton" name="btn_accept">
        <property name="toolTip">
-        <string>Accept all changes (restore original values).</string>
+                                <string>Accept all changes (update parameter values).</string>
        </property>
        <property name="text">
         <string>Accept</string>
@@ -73,7 +73,7 @@
      <item>
       <widget class="QPushButton" name="btn_reset">
        <property name="toolTip">
-        <string>Reset all changes (restore original values).</string>
+                                <string>Reset all changes (restore values from parameters).</string>
        </property>
        <property name="text">
         <string>Reset</string>
