@@ -20,13 +20,11 @@ __all__ = """
 from dataclasses import KW_ONLY
 from dataclasses import dataclass
 from typing import List
-from typing import Type
 
 from .qpw_widgets import UNDEFINED_VALUE
 from .qpw_widgets import QPW_CheckBox
 from .qpw_widgets import QPW_Choice
 from .qpw_widgets import QPW_Index
-from .qpw_widgets import QPW_Mixin
 from .qpw_widgets import QPW_Text
 
 
@@ -44,9 +42,6 @@ class ParameterItemBase:
 
     tooltip: str = ""
     """Widget tooltip for this item."""
-
-    # widget_class: Type[QPW_Mixin] = QPW_Text
-    # """Widget class for this item."""
 
     choices: List[str] = UNDEFINED_VALUE
     """List of choices for QPW_Choice widget."""

@@ -55,6 +55,20 @@ class QPW_Mixin:
         """Set the widget's value."""
         raise NotImplementedError("Define in the subclass.")
 
+    def qpw_setup(self, pitem, slot):  # noqa
+        """
+        Widget-specific setup details.
+
+        PARAMETERS
+
+        - pitem (obj): ParameterItem instance
+        - slot (obj): Function (Qt slot) to call when widget value changes.
+          Each widget class has a different signal to be used.
+        """
+        if pitem.tooltip != "":
+            self.setToolTip(pitem.tooltip)
+        self.qpw_set(pitem.value)
+
 
 class QPW_CheckBox(QPW_Mixin, QtWidgets.QCheckBox):
     """
@@ -74,6 +88,11 @@ class QPW_CheckBox(QPW_Mixin, QtWidgets.QCheckBox):
     def qpw_set(self, value):
         """Set the widget's value."""
         self.setCheckState(2 if value else 0)
+
+    def qpw_setup(self, pitem, slot):
+        self.setTristate(on=False)
+        self.stateChanged.connect(slot)
+        super().qpw_setup(pitem, slot)
 
 
 class QPW_Choice(QPW_Mixin, QtWidgets.QComboBox):
@@ -95,6 +114,11 @@ class QPW_Choice(QPW_Mixin, QtWidgets.QComboBox):
         """Set the widget's value."""
         self.setCurrentText(str(value))
 
+    def qpw_setup(self, pitem, slot):
+        self.addItems(pitem.choices)
+        self.currentTextChanged.connect(slot)
+        super().qpw_setup(pitem, slot)
+
 
 class QPW_Index(QPW_Mixin, QtWidgets.QSpinBox):
     """
@@ -115,6 +139,11 @@ class QPW_Index(QPW_Mixin, QtWidgets.QSpinBox):
         """Set the widget's value."""
         self.setValue(value)
 
+    def qpw_setup(self, pitem, slot):
+        self.setRange(pitem.lo, pitem.hi)
+        self.valueChanged.connect(slot)
+        super().qpw_setup(pitem, slot)
+
 
 class QPW_Text(QPW_Mixin, QtWidgets.QLineEdit):
     """
@@ -134,6 +163,10 @@ class QPW_Text(QPW_Mixin, QtWidgets.QLineEdit):
     def qpw_set(self, value):
         """Set the widget's value."""
         self.setText(str(value))
+
+    def qpw_setup(self, pitem, slot):
+        self.textChanged.connect(slot)
+        super().qpw_setup(pitem, slot)
 
 
 # -----------------------------------------------------------------------------

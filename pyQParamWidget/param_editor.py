@@ -9,10 +9,6 @@ Parameter Editor: dialog for user-editable application parameters.
 from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 
-from .qpw_widgets import QPW_CheckBox
-from .qpw_widgets import QPW_Choice
-from .qpw_widgets import QPW_Index
-from .qpw_widgets import QPW_Text
 from .utils import unsaved_changes_alert_dialog
 
 
@@ -60,41 +56,26 @@ class ParameterEditor(QtWidgets.QWidget):
         self.setDirty(False)  # unsaved changes if True
 
     def setup(self):
+        """Build the QFormLayout with the parameters."""
         self.editors = {}
-        for k, pitem in self.parameters.items():
+
+        def checkIfDirty(_v):  # _v (new value) ignored here
+            """If dirty, then widget value(s) are not as provided."""
+            dirty = len(self.changedValues()) > 0
+            self.setDirty(dirty)
+
+        def add_parameter_widget(pitem):
             editor = pitem.widget_class(self, parameter=pitem)
-
-            def checkIfDirty(_v):  # _v (new value) ignored here
-                """If dirty, then widget value(s) are not as provided."""
-                dirty = len(self.changedValues()) > 0
-                self.setDirty(dirty)
-
-            if pitem.tooltip != "":
-                editor.setToolTip(pitem.tooltip)
-
-            if isinstance(editor, QPW_CheckBox):
-                editor.setTristate(on=False)
-                editor.qpw_set(pitem.value)
-                editor.stateChanged.connect(checkIfDirty)
-            elif isinstance(editor, QPW_Choice):
-                editor.addItems(pitem.choices)
-                editor.qpw_set(pitem.value)
-                editor.currentTextChanged.connect(checkIfDirty)
-            elif isinstance(editor, QPW_Index):
-                editor.setRange(pitem.lo, pitem.hi)
-                editor.qpw_set(pitem.value)
-                editor.valueChanged.connect(checkIfDirty)
-            elif isinstance(editor, QPW_Text):
-                editor.qpw_set(pitem.value)
-                editor.textChanged.connect(checkIfDirty)
-            else:
-                raise TypeError(
-                    f"Unexpected editor widget: {editor.__class__.__name__}"
-                )
+            editor.qpw_setup(pitem, checkIfDirty)
 
             label = QtWidgets.QLabel(self, text=pitem.label)
             self.form_layout.addRow(label, editor)
-            self.editors[k] = editor
+            return editor
+
+        # Remember each parameter's editor widget.
+        self.editors = {
+            k: add_parameter_widget(pitem) for k, pitem in self.parameters.items()
+        }
 
         self.do_reset()  # sets editor widgets to supplied values
         self.btn_reset.clicked.connect(self.do_reset)
