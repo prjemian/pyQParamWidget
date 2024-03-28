@@ -62,7 +62,7 @@ jobs:
         run: |
           echo "#-----Info------------------------"
           python3 -m pip list
-          # python -c "import pyqparamwidget; print(f'{pyqparamwidget.__version__=}')"
+          python -c "import pyQParamWidget; print(f'{pyQParamWidget.__version__=}')"
           echo "#---------------------------------"
 
       - name: Sphinx
@@ -71,7 +71,7 @@ jobs:
       - name: Upload Docs ZIP file as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: pyqparamwidget-docs
+          name: pyQParamWidget-docs
           path: docs/build/html
 
       - name: Deploy (to gh-pages branch) only on demand

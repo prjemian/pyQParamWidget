@@ -4,6 +4,6 @@
 Parameter Item
 ======================
 
-.. automodule:: pyqparamwidget.param_item
+.. automodule:: pyQParamWidget.param_item
     :members:
     :private-members:

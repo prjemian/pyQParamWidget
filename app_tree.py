@@ -6,7 +6,7 @@ import sys
 
 from PyQt5 import QtWidgets
 
-import pyqparamwidget as qpw
+import pyQParamWidget as qpw
 
 sampler = {
     "applications": {

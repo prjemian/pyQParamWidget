@@ -2,6 +2,6 @@
 Utilities
 ===========
 
-.. automodule:: pyqparamwidget.utils
+.. automodule:: pyQParamWidget.utils
     :members:
     :private-members:

@@ -1,6 +1,6 @@
-"""pyqparamwidget package"""
+"""pyQParamWidget package"""
 
-__package__ = "pyqparamwidget"
+__package__ = "pyQParamWidget"
 
 from .param_editor import *  # noqa
 from .param_item import *  # noqa

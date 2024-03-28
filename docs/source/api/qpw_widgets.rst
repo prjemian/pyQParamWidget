@@ -2,6 +2,6 @@
 QPW Widgets
 ===========
 
-.. automodule:: pyqparamwidget.qpw_widgets
+.. automodule:: pyQParamWidget.qpw_widgets
     :members:
     :private-members:

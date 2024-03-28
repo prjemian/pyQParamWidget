@@ -21,7 +21,7 @@ maintainers = [
 readme = "README.md"
 requires-python = ">=3.10"
 keywords = ['PyQt', 'editor']
-license = {file = "pyqparamwidget/LICENSE.txt"}
+license = {file = "pyQParamWidget/LICENSE.txt"}
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
@@ -43,7 +43,7 @@ dependencies = [
 "Bug Tracker" = "https://github.com/prjemian/pyQParamWidget/issues"
 
 # [project.scripts]
-# gemviz = "pyqparamwidget.app:main"
+# gemviz = "pyQParamWidget.app:main"
 
 [tool.black]
 line-length = 115
@@ -94,4 +94,4 @@ addopts = [
 ]
 
 [tool.setuptools_scm]
-write_to = "pyqparamwidget/_version.py"
+write_to = "pyQParamWidget/_version.py"

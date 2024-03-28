@@ -4,7 +4,7 @@
 Parameter Editor
 ======================
 
-.. automodule:: pyqparamwidget.param_editor
+.. automodule:: pyQParamWidget.param_editor
     :members:
     :private-members:
 

@@ -11,7 +11,7 @@ def read_parameter_specifications(parms_file):
     """Read application parameter specifications from YAML file."""
     import yaml
 
-    import pyqparamwidget as qpw
+    import pyQParamWidget as qpw
 
     editors = {
         "QPW_CheckBox": qpw.ParameterItemCheckbox,
@@ -36,7 +36,7 @@ def read_parameter_specifications(parms_file):
 
 
 def main():
-    from pyqparamwidget import ParameterEditor
+    from pyQParamWidget import ParameterEditor
 
     parms = read_parameter_specifications(PARMS_FILE)
     app = QtWidgets.QApplication(sys.argv)

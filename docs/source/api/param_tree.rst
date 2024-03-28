@@ -4,6 +4,6 @@
 Parameter Tree
 ======================
 
-.. automodule:: pyqparamwidget.param_tree
+.. automodule:: pyQParamWidget.param_tree
     :members:
     :private-members:

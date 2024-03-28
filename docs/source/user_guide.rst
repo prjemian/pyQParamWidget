@@ -15,7 +15,7 @@ Parameter Items
 
 An individual *parameter* item has several pieces of information, as described
 in the source code documentation, see
-:class:`~pyqparamwidget.param_item.ParameterItemBase`. There are different
+:class:`~pyQParamWidget.param_item.ParameterItemBase`. There are different
 types, depending on the type of parameter to be edited.  Here is an example of a
 *dictionary of Parameter Items*.
 
@@ -24,7 +24,7 @@ types, depending on the type of parameter to be edited.  Here is an example of a
 .. code-block:: python
     :linenos:
 
-    import pyqparamwidget as qpw
+    import pyQParamWidget as qpw
     parms = {
         "title": qpw.ParameterItemText("title", "Suggested title"),
         "color": qpw.ParameterItemChoice(
@@ -88,12 +88,12 @@ Parameter Editor
 ==================================
 
 For the source code documentation, see
-:class:`~pyqparamwidget.param_editor.ParameterEditor`.
+:class:`~pyQParamWidget.param_editor.ParameterEditor`.
 
 .. rubric:: EXAMPLE
 
 First make a dictionary of
-:class:`~pyqparamwidget.param_item.ParameterItem` objects.
+:class:`~pyQParamWidget.param_item.ParameterItem` objects.
 The keys of the dictionary can be strings or Python objects or
 any other structure allowed by Python as dictionary keys.  The
 keys, themselves, are not used by ``ParameterEditor``.  They
@@ -139,7 +139,7 @@ Parameter Tree
 ==================================
 
 A hierarchy of parameters can be edited using the
-:class:`~pyqparamwidget.param_tree.ParameterTree()` dialog. Here is one example.
+:class:`~pyQParamWidget.param_tree.ParameterTree()` dialog. Here is one example.
 
 .. rubric:: View of a hierarchical parameter dictionary using ParameterTree
 
@@ -154,7 +154,7 @@ A hierarchy of parameters can be edited using the
 .. code-block:: python
     :linenos:
 
-    import pyqparamwidget as qpw
+    import pyQParamWidget as qpw
 
     hierarchy = {
         "applications": {

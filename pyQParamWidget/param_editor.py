@@ -105,7 +105,7 @@ class ParameterEditor(QtWidgets.QWidget):
         Return dictionary with only the changed values.
 
         .. note:: Result is always empty dictionary when
-           ``dirty==True``.  Use :meth:`~pyqparamwidget.param_editor.ParameterEditor.widgetValues()` to get the final values.
+           ``dirty==True``.  Use :meth:`~pyQParamWidget.param_editor.ParameterEditor.widgetValues()` to get the final values.
         """
         return {
             k: editor.qpw_get()
