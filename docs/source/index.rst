@@ -23,6 +23,8 @@ pyQParamWidget
    api/index
 
 
+:documentation: https://prjemian.github.io/pyQParamWidget/
+:source: https://github.com/prjemian/pyQParamWidget
 
 Indices and tables
 ==================

@@ -54,7 +54,7 @@ Here is one example.
     app = QtWidgets.QApplication(sys.argv)
     window = qpw.ParameterEditor(None, parameters)
     window.show()
-    print(f"{window.widgetValues()=}")
+    print(f"{window.values()=}")
     sys.exit(app.exec())
 
 For the source code documentation, see
@@ -114,7 +114,7 @@ Finally, add ``editor`` into parent's layout.
 Get the values from the editor widget
 -------------------------------------
 
-The widget's :meth:`~pyQParamWidget.param_editor.ParameterEditor.widgetValues`
+The widget's :meth:`~pyQParamWidget.param_editor.ParameterEditor.values`
 method returns a dictionary with the accepted parameter values.  The dictionary
 keys are the same as the parameter dictionary supplied.
 
@@ -122,7 +122,7 @@ keys are the same as the parameter dictionary supplied.
 
     editor = ParameterEditor(parent, parameters)
     # ...user interaction
-    results = editor.widgetValues()
+    results = editor.values()
 
 .. rubric:: EXAMPLE
 

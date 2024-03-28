@@ -24,7 +24,7 @@ class ParameterEditor(QtWidgets.QWidget):
 
       * User must ``Accept`` or ``Reset`` any changes (which sets ``dirty=False``).
       * Verify: ``ParameterEditor.dirty() == True``
-      * Get values: ``results = ParameterEditor.widgetValues()``
+      * Get values: ``results = ParameterEditor.values()``
 
     PARAMETERS
 
@@ -39,7 +39,7 @@ class ParameterEditor(QtWidgets.QWidget):
         ~do_accept
         ~do_reset
         ~setDirty
-        ~widgetValues
+        ~values
     """
 
     ui_file = "param_editor.ui"
@@ -86,7 +86,7 @@ class ParameterEditor(QtWidgets.QWidget):
         Return dictionary with only the changed values.
 
         .. note:: Result is always empty dictionary when
-           ``dirty==True``.  Use :meth:`~pyQParamWidget.param_editor.ParameterEditor.widgetValues()` to get the final values.
+           ``dirty==True``.  Use :meth:`~pyQParamWidget.param_editor.ParameterEditor.values()` to get the final values.
         """
         return {
             k: editor.qpw_get()
@@ -133,7 +133,7 @@ class ParameterEditor(QtWidgets.QWidget):
         self.btn_accept.setEnabled(dirty)
         self.btn_reset.setEnabled(dirty)
 
-    def widgetValues(self):
+    def values(self):
         """Return a dictionary of all widget values."""
         return {k: editor.qpw_get() for k, editor in self.editors.items()}
 

@@ -8,13 +8,29 @@ Python version(s) | Unit Tests | Code Coverage | License
 --- | --- | --- | ---
 [![Python version](https://img.shields.io/pypi/pyversions/pyQParamWidget.svg)](https://pypi.python.org/pypi/pyQParamWidget) | [![Testing](https://github.com/prjemian/pyQParamWidget/actions/workflows/code.yml/badge.svg)](https://github.com/prjemian/pyQParamWidget/actions/workflows/code.yml) | [![Coverage Status](https://coveralls.io/repos/github/prjemian/pyQParamWidget/badge.svg?branch=main)](https://coveralls.io/github/prjemian/pyQParamWidget?branch=main) | [![license: CCA4](https://img.shields.io/badge/license-CCA4-darkblue)](/pyQParamWidget/LICENSE.txt)
 
-A PyQt5 QWidget and QDialog to edit application parameters.
+A PyQt5 editor (QWidget) and tree (QDialog) to edit application parameters.
+
+![View of example tree and editor](./qpw.png)
+
+## Import
 
 ```py
 import pyQParamWidget as qpw
 ```
 
-![View of example tree and editor](./qpw.png)
+## Install
+
+- `pip install pyQParamWidget`
+- TODO: `conda install -c conda-forge pyQParamWidget`
+- `pip install https://github.com/prjemian/pyQParamWidget/archive/main.zip`
+- `git clone https://github.com/prjemian/pyQParamWidget` and `pip install -e pyQParamWidget --no-deps`
+
+## References
+
+- documentation: https://prjemian.github.io/pyQParamWidget/
+- source: https://github.com/prjemian/pyQParamWidget
+
+## Copyright
 
 ```text
 # -----------------------------------------------------------------------------

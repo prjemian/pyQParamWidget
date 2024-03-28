@@ -11,7 +11,7 @@ copyright = "2024, Pete R. Jemian"
 [project]
 name = "pyQParamWidget"
 dynamic = ["version"]
-description = "A PyQt5 QWidget and QDialog to edit application parameters."
+description = "A PyQt5 editor (QWidget) and tree (QDialog) to edit application parameters."
 authors = [
   { name="Pete Jemian", email="prjemian+pyQParamWidget@gmail.com" },
 ]

@@ -32,6 +32,6 @@ editing a hierarchical structure with various sets of parameters.
    :caption: Contents:
    :glob:
 
-   parameteritems
-   parametereditor
-   parametertree
+   param_item
+   param_editor
+   param_tree
