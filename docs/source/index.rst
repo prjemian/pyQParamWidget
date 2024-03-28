@@ -25,6 +25,8 @@ pyQParamWidget
 
 :documentation: https://prjemian.github.io/pyQParamWidget/
 :source: https://github.com/prjemian/pyQParamWidget
+:built: |today|
+:full version: |release|
 
 Indices and tables
 ==================
