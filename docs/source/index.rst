@@ -19,6 +19,7 @@ pyQParamWidget
    :glob:
 
    user_guide
+   install
    api/index
 
 

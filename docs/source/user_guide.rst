@@ -51,6 +51,13 @@ The Parameter Item types are listed next:
         "autoscale", True, tooltip="Otherwise, not autoscale."
         )
 
+.. rubric:: Example widget to edit a ParameterItemCheckbox.
+
+.. figure:: _static/ParameterItemCheckbox.png
+   :width: 40%
+
+   Example widget to edit a ``ParameterItemCheckbox``.
+
 ``ParameterItemChoice``
 ------------------------------------
 
@@ -61,6 +68,14 @@ The Parameter Item types are listed next:
         choices=["", "red", "green", "blue"],
         tooltip="Pick a color.",
         )
+
+.. rubric:: Example widget to edit a ParameterItemChoice.
+
+.. figure:: _static/ParameterItemChoice.png
+   :width: 40%
+
+   Example widget to edit a ``ParameterItemChoice``.  Drop-down
+   menu is selected to show the list of choices.
 
 ``ParameterItemIndex``
 ------------------------------------
@@ -74,6 +89,13 @@ The Parameter Item types are listed next:
         tooltip="Choose a value from the range.",
         )
 
+.. rubric:: Example widget to edit a ParameterItemIndex.
+
+.. figure:: _static/ParameterItemIndex.png
+   :width: 40%
+
+   Example widget to edit a ``ParameterItemIndex``.
+
 ``ParameterItemText``
 ------------------------------------
 
@@ -81,11 +103,72 @@ The Parameter Item types are listed next:
 
     ParameterItemText("title", "Suggested title", tooltip="Set the title. Be brief.")
 
+.. rubric:: Example widget to edit a ParameterItemText.
+
+.. figure:: _static/ParameterItemText.png
+   :width: 40%
+
+   Example widget to edit a ``ParameterItemText``. The tooltip is also shown.
+
 
 .. _guide.ParameterEditor:
 
 Parameter Editor
 ==================================
+
+A parameter dictionary can be edited with a
+:class:`~pyQParamWidget.param_editor.ParameterEditor()` widget. 
+
+.. seealso:: :ref:`guide.ParameterTree`
+
+Here is one example.
+
+.. rubric:: View of a parameter dictionary using ParameterEditor
+
+.. figure:: _static/editor.png
+   :width: 60%
+
+   View of ``ParameterEditor`` dialog.
+
+.. rubric::  Full Python application to display parameters in a ParameterEditor widget
+
+.. code-block:: python
+
+    """Parameters Editor Demo Application"""
+    import sys
+
+    from PyQt5 import QtWidgets
+    import pyQParamWidget as qpw
+
+    # build the dictionary
+    parameters = {
+        "settings_file": qpw.ParameterItemText(
+            label="settings file", value="settings.ini"
+        ),
+        "server": qpw.ParameterItemChoice(
+            label="server URL",
+            value="http://localhost",
+            choices=[
+                "http://localhost",
+                "http://localhost.localdoman",
+                "http://127.0.0.1",
+            ],
+        ),
+        "autoconnect": qpw.ParameterItemCheckbox(
+            label="Autoconnect with server?", value=True
+        ),
+        "catalog": qpw.ParameterItemText(label="catalog", value="my_catalog"),
+        "autoopen": qpw.ParameterItemCheckbox(
+            label="Auto open catalog?", value=True
+        ),
+    }
+
+    # Show ParameterEditor in a PyQt application
+    app = QtWidgets.QApplication(sys.argv)
+    window = qpw.ParameterEditor(None, parameters)
+    window.show()
+    print(f"{window.widgetValues()=}")
+    sys.exit(app.exec())
 
 For the source code documentation, see
 :class:`~pyQParamWidget.param_editor.ParameterEditor`.
@@ -129,25 +212,72 @@ the ``parameters`` dictionary.
 
 .. code-block:: python
 
-    panel = ParameterEditor(parent, parameters)
+    editor = ParameterEditor(parent, parameters)
 
-Finally, add ``panel`` into parent's layout.
+Finally, add ``editor`` into parent's layout.
+
+.. _ug:alert:
+
+Accept and Reset buttons
+------------------------
+
+The buttons for **Accept** and **Reset** are enabled when the values
+in the editor are different than the supplied parameters.
+
+Before the window can be closed, it is necessary to either **Accept** all
+changes or **Reset** all widgets to supplied parameters values.
+
+.. rubric:: View of a ParameterEditor widget with changes.
+
+.. figure:: _static/has-changes.png
+   :width: 60%
+
+   View of ``ParameterEditor`` widget with changes.
+
+This dialog will be shown if the editor window is requested to close while
+changes have not been resolved.
+
+.. rubric:: Alert when request to close editor window with unresolved changes.
+
+.. figure:: _static/alert.png
+   :width: 60%
+
+   Alert message when trying to close ``ParameterWidget`` with changes.
+
+.. rubric:: Accept
+
+When pressed, the **Accept** button *updates the supplied parameters* from the
+widgets.
+
+.. rubric:: Reset
+
+When pressed, the **Reset** button *updates the widgets* from the supplied
+parameters.
 
 .. _guide.ParameterTree:
 
 Parameter Tree
 ==================================
 
-A hierarchy of parameters can be edited using the
-:class:`~pyQParamWidget.param_tree.ParameterTree()` dialog. Here is one example.
+A *hierarchy* of parameters can be edited using the
+:class:`~pyQParamWidget.param_tree.ParameterTree()` dialog. 
+
+.. seealso:: :ref:`guide.ParameterEditor`
+
+Here is one example.
 
 .. rubric:: View of a hierarchical parameter dictionary using ParameterTree
 
 .. figure:: _static/qpw.png
-   :alt: fig.qpw
    :width: 60%
 
    View of ``ParameterTree`` dialog.
+
+The *hierarchy* (a dictionary of dictionaries) is displayed as a tree on the
+left side.  The keys are text strings, to be displayed in the tree.  The end of
+each branch of the tree is a dictionary of Parameter Items.  See the next block
+of Python code.  When the end of a branch is selected, a :ref:`guide.ParameterEditor`
+is shown in the right side of the dialog.
 
 .. rubric:: Python code to construct the example hierarchical parameter dictionary
 
@@ -200,3 +330,17 @@ A hierarchy of parameters can be edited using the
     dialog.exec()  # modal: blocks
     # Show the final values of the parameters, once the dialog is closed.
     print(f"{dialog.values()=}")
+
+An alert will be shown (see :ref:`ug:alert`) if the editor has changes. It will
+not be possible to select another item from the tree until the changes are
+resolved.
+
+.. rubric:: Alert message when selecting another tree item while editor has changes.
+
+.. figure:: _static/tree-with-changes.png
+   :width: 60%
+
+   Editor shown for ``other`` parameters. After the checkbox was changed, the
+   ``server`` was selected.  This brings up the *Alert* message, stating that
+   changes must first be resolved.  Once the dialog is closed, the selected item
+   will be changed back to ``other``.
