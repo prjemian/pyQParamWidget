@@ -30,6 +30,7 @@ class QPW_Mixin:
        ~qpw_get
        ~qpw_isChanged
        ~qpw_set
+       ~qpw_setup
     """
 
     parameters = UNDEFINED_VALUE
@@ -63,7 +64,8 @@ class QPW_Mixin:
 
         - pitem (obj): ParameterItem instance
         - slot (obj): Function (Qt slot) to call when widget value changes.
-          Each widget class has a different signal to be used.
+          Connect signal and slot in a subclass as needed since each widget
+          class has a different name for the signal to be used.
         """
         if pitem.tooltip != "":
             self.setToolTip(pitem.tooltip)
@@ -79,6 +81,7 @@ class QPW_CheckBox(QPW_Mixin, QtWidgets.QCheckBox):
        ~qpw_get
        ~qpw_isChanged
        ~qpw_set
+       ~qpw_setup
     """
 
     def qpw_get(self):
@@ -104,6 +107,7 @@ class QPW_Choice(QPW_Mixin, QtWidgets.QComboBox):
        ~qpw_get
        ~qpw_isChanged
        ~qpw_set
+       ~qpw_setup
     """
 
     def qpw_get(self):
@@ -129,6 +133,7 @@ class QPW_Index(QPW_Mixin, QtWidgets.QSpinBox):
        ~qpw_get
        ~qpw_isChanged
        ~qpw_set
+       ~qpw_setup
     """
 
     def qpw_get(self):
@@ -154,6 +159,7 @@ class QPW_Text(QPW_Mixin, QtWidgets.QLineEdit):
        ~qpw_get
        ~qpw_isChanged
        ~qpw_set
+       ~qpw_setup
     """
 
     def qpw_get(self):

@@ -18,7 +18,7 @@ pyQParamWidget
    :caption: Contents:
    :glob:
 
-   user_guide
+   user_guide/index
    install
    api/index
 
