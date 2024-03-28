@@ -16,7 +16,15 @@ sampler = {
                     label="settings file", value="~/.config/settings.ini"
                 ),
                 "catalog": qpw.ParameterItemText(label="catalog", value="bluesky_data"),
-                "url": qpw.ParameterItemText(label="url", value="http://localhost"),
+                "url": qpw.ParameterItemChoice(
+                    label="url",
+                    value="http://localhost",
+                    choices=[
+                        "http://localhost",
+                        "http://localhost.localdoman",
+                        "http://127.0.0.1",
+                    ],
+                ),
             },
         },
         "other": {

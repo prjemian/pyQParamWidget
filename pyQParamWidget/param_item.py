@@ -45,8 +45,8 @@ class ParameterItemBase:
     tooltip: str = ""
     """Widget tooltip for this item."""
 
-    widget_class: Type[QPW_Mixin] = QPW_Text
-    """Widget class for this item."""
+    # widget_class: Type[QPW_Mixin] = QPW_Text
+    # """Widget class for this item."""
 
     choices: List[str] = UNDEFINED_VALUE
     """List of choices for QPW_Choice widget."""
