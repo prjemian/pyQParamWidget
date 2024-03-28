@@ -20,6 +20,8 @@ import pyQParamWidget as qpw
 
 ## Install
 
+Install by any of these methods:
+
 - `pip install pyQParamWidget`
 - TODO: `conda install -c conda-forge pyQParamWidget`
 - `pip install https://github.com/prjemian/pyQParamWidget/archive/main.zip`
