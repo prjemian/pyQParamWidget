@@ -70,8 +70,10 @@ class ParameterItemBase:
 class ParameterItemCheckbox(ParameterItemBase):
     """Edit a checkbox parameter."""
 
+    widget_class = QPW_CheckBox
+
     def __init__(self, label, value, tooltip=""):
-        super().__init__(label, value, tooltip=tooltip, widget_class=QPW_CheckBox)
+        super().__init__(label, value, tooltip=tooltip)
 
     def validate(self):
         """Validation not necessary for checkbox."""
@@ -81,10 +83,10 @@ class ParameterItemCheckbox(ParameterItemBase):
 class ParameterItemChoice(ParameterItemBase):
     """Choose a parameter value from a list."""
 
+    widget_class = QPW_Choice
+
     def __init__(self, label, value, choices=[], tooltip=""):
-        super().__init__(
-            label, value, tooltip=tooltip, choices=choices, widget_class=QPW_Choice
-        )
+        super().__init__(label, value, tooltip=tooltip, choices=choices)
 
     def validate(self):
         """Must provide a list of choices."""
@@ -95,6 +97,8 @@ class ParameterItemChoice(ParameterItemBase):
 class ParameterItemIndex(ParameterItemBase):
     """Set a numerical parameter between lo & hi."""
 
+    widget_class = QPW_Index
+
     def __init__(
         self,
         label: str,
@@ -102,11 +106,8 @@ class ParameterItemIndex(ParameterItemBase):
         hi: int = UNDEFINED_VALUE,
         lo: int = UNDEFINED_VALUE,
         tooltip: str = "",
-        widget_class=QPW_Index,
     ):
-        super().__init__(
-            label, value, tooltip=tooltip, hi=hi, lo=lo, widget_class=widget_class
-        )
+        super().__init__(label, value, tooltip=tooltip, hi=hi, lo=lo)
 
     def validate(self):
         """Must provide lo <= value <= hi."""
@@ -135,8 +136,10 @@ class ParameterItemIndex(ParameterItemBase):
 class ParameterItemText(ParameterItemBase):
     """Edit a text parameter."""
 
+    widget_class = QPW_Text
+
     def __init__(self, label, value, tooltip=""):
-        super().__init__(label, value, tooltip=tooltip, widget_class=QPW_Text)
+        super().__init__(label, value, tooltip=tooltip)
 
     def validate(self):
         """Validation not necessary for text."""
