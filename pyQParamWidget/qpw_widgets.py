@@ -1,5 +1,21 @@
 """
-Constants
+QPW Widgets
+
+This Python module provides classes for creating user interface
+widgets in PyQt5 for inputting parameters.
+The module defines classes such as ``QPW_CheckBox``,
+``QPW_Choice``, ``QPW_SpinBox``, and ``QPW_Text``
+that inherit from the``QPW_Mixin`` class.
+
+The ``QPW_Mixin`` class implements common functionality such
+as setting and getting widget values, checking if widget
+values have changed, and setting up tooltip text.
+The methods added by the ``QPW_Mixin`` class are prefixed with
+``qpw_`` to avoid replacing methods from the parent Qt widget
+class.
+
+These widgets can be instantiated and used in a PyQt5 GUI to
+provide a way for users to input values for various parameters.
 
 .. autosummary::
 

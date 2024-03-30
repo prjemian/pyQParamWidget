@@ -1,6 +1,9 @@
 """
 Parameter Item
 
+This code defines classes that inherit from the
+``ParameterItemBase`` class.
+
 .. autosummary::
    ~ParameterItemBase
    ~ParameterItemCheckbox
@@ -30,7 +33,13 @@ from .qpw_widgets import QPW_Text
 
 @dataclass()
 class ParameterItemBase:
-    """Each parameter to be edited has several pieces of information."""
+    """
+    Each parameter to be edited has several pieces of information.
+
+    The other ParameterItemXYZ classes inherit from this class.
+    Each subclass specifies the type of widget that should be
+    used in the GUI to capture input for the parameter.
+    """
 
     label: str
     """Form text for this item."""
@@ -53,17 +62,34 @@ class ParameterItemBase:
     """Minimum value for QPW_SpinBox widget."""
 
     def validate(self):
+        """
+        Each subclass must define a ``validate`` method that
+        performs input validation to ensure the input value
+        matches the expected format.
+
+        An instance of one of these subclasses defines a
+        parameter with a label, initial value, tooltip,
+        choices (for ``ParameterItemChoice``),
+        minimum/maximum values (for `ParameterItemSpinBox`),
+        and widget class/interface that will be used for
+        this parameter in the GUI.
+        """
         raise NotImplementedError("Implement in the subclass.")
 
     def __post_init__(self):
-        """Validate the inputs."""
+        """
+        Validate the inputs.
+
+        The ``__post_init__`` method is called
+        after initializing the object to validate the inputs.
+        """
         # print(f"{self.__class__.__name__}.{sys._getframe().f_code.co_name}()")
 
         self.validate()
 
 
 class ParameterItemCheckbox(ParameterItemBase):
-    """Edit a checkbox parameter."""
+    """Edit a checkbox parameter where the value is either ``True`` or ``False``."""
 
     widget_class = QPW_CheckBox
 
@@ -76,7 +102,7 @@ class ParameterItemCheckbox(ParameterItemBase):
 
 
 class ParameterItemChoice(ParameterItemBase):
-    """Choose a parameter value from a list."""
+    """Choose a parameter value from a list of choices."""
 
     widget_class = QPW_Choice
 
@@ -129,7 +155,7 @@ class ParameterItemSpinBox(ParameterItemBase):
 
 
 class ParameterItemText(ParameterItemBase):
-    """Edit a text parameter."""
+    """Edit a text parameter where any text can be entered."""
 
     widget_class = QPW_Text
 
